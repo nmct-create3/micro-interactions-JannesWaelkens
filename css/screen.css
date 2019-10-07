@@ -62,6 +62,10 @@
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
 
+    
+    --global-inline-symbol-space: calc(var(--global-baseline) * 1.75);
+    --global-inline-symbol-size: calc(var(--global-baseline) * 2.5);
+
     /* forms */
     --global-placeholder-color: var(--global-color-neutral-x-light);
     --global-input-backgroundColor: White;
@@ -634,6 +638,8 @@ input::placeholder {
     transition: border var(--global-transition-timing-alpha), box-shadow var(--global-transition-timing-alpha);
 }
 
+
+
 .c-input:hover {
     border-color: var(--global-input-hover-borderColor);
 }
@@ -644,14 +650,82 @@ input::placeholder {
     box-shadow: var(--global-input-focus-boxShadow);
 }
 
+
+
 /*
 Input password with toggle checkbox on top of it needs
 more padding on the right to avoid overlap
 */
 
-.c-input--password-with-toggle {
+.c-input--password-with-toggle{
     padding-right: 52px;
+
 }
+
+.c-password-toggle__checkbox{
+    /*display:block show */
+    /*display: none = hide */
+
+}
+
+.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--show{
+    display:none;
+}
+
+/* hier kijken als hij checked is in de ....*/
+.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--hide{
+    display:block;
+
+}
+
+.c-password-toggle__symbol--show {
+    display: block;  
+}
+
+.c-password-toggle__symbol--hide {
+    display: none;
+}
+
+
+
+
+.c-password-toggle-container {
+    position: relative;
+    display:block;
+}
+
+.c-password-toggle {
+    position: absolute;
+   
+    width:var(--global-inline-symbol-size) ;
+    height: var(--global-inline-symbol-size);
+
+    right: var(--global-inline-symbol-space);
+    top: var(--global-inline-symbol-space) ;
+    
+    fill: var(--global-color-neutral-x-light);
+    
+}
+
+.c-password-toggle__symbol {
+    position: absolute;
+   /* width: 20px;
+    
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    */
+
+}
+
+.c-password-toggle__label {
+    /*padding-right: 52px;*/
+}
+
+
+
+
 
 /* option input for checkboxes and radio buttons */
 
@@ -676,6 +750,12 @@ more padding on the right to avoid overlap
 
 .c-label--option {
     padding-bottom: 0;
+}
+
+.c-label__error-message{
+    float: right;
+    font-weight: 600;
+    color: pink;
 }
 
 /*
